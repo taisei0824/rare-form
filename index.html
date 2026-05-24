@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レアアイテム購入希望登録</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <header class="header">
+      <p class="header__sub">RARE ITEM</p>
+      <h1 class="header__title">購入希望登録</h1>
+      <p class="header__desc">希望商品を選択して登録してください。<br>作成時にLINEでご連絡します。</p>
+    </header>
+
+    <form id="wishForm">
+
+      <!-- =============================================
+           STEP 1: 商品選択
+           商品を追加・変更する場合はここを編集
+      ============================================= -->
+      <div class="step" id="step1">
+        <h2 class="step__title"><span class="step__num">01</span>希望商品を選択</h2>
+        <p class="step__note">複数選択できます</p>
+        <div class="product-grid">
+
+          <!-- 商品カード：商品名・色はここで変更 -->
+          <label class="product-card" data-product="eye">
+            <input type="checkbox" name="product" value="eye">
+            <div class="product-card__inner">
+              <div class="product-card__check">✓</div>
+              <p class="product-card__name">eye</p>
+              <!-- eyeの色：白 -->
+              <p class="product-card__colors">white</p>
+            </div>
+          </label>
+
+          <label class="product-card" data-product="himawari">
+            <input type="checkbox" name="product" value="himawari">
+            <div class="product-card__inner">
+              <div class="product-card__check">✓</div>
+              <p class="product-card__name">ひまわり</p>
+              <!-- ひまわりの色：白・ピンク・水色 -->
+              <p class="product-card__colors">white / pink / light blue</p>
+            </div>
+          </label>
+
+          <label class="product-card" data-product="justone">
+            <input type="checkbox" name="product" value="justone">
+            <div class="product-card__inner">
+              <div class="product-card__check">✓</div>
+              <p class="product-card__name">JUST ONE</p>
+              <!-- JUST ONEの色：白・ピンク・水色 -->
+              <p class="product-card__colors">white / pink / light blue</p>
+            </div>
+          </label>
+
+          <label class="product-card" data-product="grooveon">
+            <input type="checkbox" name="product" value="grooveon">
+            <div class="product-card__inner">
+              <div class="product-card__check">✓</div>
+              <p class="product-card__name">GROOVE ON</p>
+              <!-- GROOVE ONの色：白 -->
+              <p class="product-card__colors">white</p>
+            </div>
+          </label>
+
+        </div>
+      </div>
+
+      <!-- =============================================
+           STEP 2: 各商品の詳細選択
+           JSで動的に生成されます
+      ============================================= -->
+      <div class="step" id="step2" style="display:none;">
+        <h2 class="step__title"><span class="step__num">02</span>色・サイズ・温度感を選択</h2>
+        <div id="productDetails"></div>
+      </div>
+
+      <!-- =============================================
+           STEP 3: 連絡先
+      ============================================= -->
+      <div class="step" id="step3" style="display:none;">
+        <h2 class="step__title"><span class="step__num">03</span>連絡先を入力</h2>
+        <div class="input-group">
+          <label class="input-label" for="phone">電話番号</label>
+          <input type="tel" id="phone" name="phone" class="input-field" placeholder="09012345678" required>
+          <p class="input-note">作成時にLINEでご連絡します</p>
+        </div>
+      </div>
+
+      <!-- ナビゲーションボタン -->
+      <div class="nav-buttons">
+        <button type="button" class="btn btn--back" id="backBtn" style="display:none;">戻る</button>
+        <button type="button" class="btn btn--next" id="nextBtn">次へ</button>
+        <button type="submit" class="btn btn--submit" id="submitBtn" style="display:none;">登録する</button>
+      </div>
+
+    </form>
+
+    <!-- 送信完了画面 -->
+    <div class="complete" id="completeView" style="display:none;">
+      <div class="complete__icon">✓</div>
+      <h2 class="complete__title">登録完了</h2>
+      <p class="complete__text">作成時にLINEでご連絡します。<br>お楽しみに！</p>
+
+      <!-- 送信データの確認表示（開発中） -->
+      <div class="debug" id="debugOutput"></div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

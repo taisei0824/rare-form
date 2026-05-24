@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+/* =============================================
+   CSS変数：色・フォントはここで一括管理
+============================================= */
+:root {
+  --color-bg: #f7f6f3;
+  --color-surface: #ffffff;
+  --color-accent: #1a1a1a;
+  --color-accent-light: #333;
+  --color-muted: #888;
+  --color-border: #e0ddd8;
+  --color-selected: #1a1a1a;
+  --color-selected-text: #ffffff;
+  --color-error: #c0392b;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Noto Sans JP', sans-serif;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  font-family: var(--font-body);
+  color: var(--color-accent);
+  min-height: 100vh;
+  padding: 40px 16px 80px;
+}
+
+/* =============================================
+   コンテナ
+============================================= */
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* =============================================
+   ヘッダー
+============================================= */
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.header__sub {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--color-muted);
+  margin-bottom: 8px;
+}
+
+.header__title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.header__desc {
+  font-size: 13px;
+  color: var(--color-muted);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* =============================================
+   ステップ
+============================================= */
+.step {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin-bottom: 16px;
+  border: 1px solid var(--color-border);
+}
+
+.step__title {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step__num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1;
+  color: var(--color-muted);
+}
+
+.step__note {
+  font-size: 11px;
+  color: var(--color-muted);
+  margin-bottom: 20px;
+  margin-left: 38px;
+}
+
+/* =============================================
+   商品グリッド
+============================================= */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.product-card {
+  cursor: pointer;
+  display: block;
+}
+
+.product-card input[type="checkbox"] {
+  display: none;
+}
+
+.product-card__inner {
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 16px 14px;
+  position: relative;
+  transition: all 0.2s ease;
+  background: var(--color-bg);
+}
+
+.product-card__check {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: transparent;
+  transition: all 0.2s ease;
+}
+
+.product-card input:checked ~ .product-card__inner {
+  border-color: var(--color-selected);
+  background: var(--color-selected);
+}
+
+.product-card input:checked ~ .product-card__inner .product-card__name {
+  color: var(--color-selected-text);
+}
+
+.product-card input:checked ~ .product-card__inner .product-card__colors {
+  color: rgba(255,255,255,0.6);
+}
+
+.product-card input:checked ~ .product-card__inner .product-card__check {
+  background: white;
+  border-color: white;
+  color: var(--color-selected);
+}
+
+.product-card__name {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  transition: color 0.2s;
+}
+
+.product-card__colors {
+  font-size: 10px;
+  color: var(--color-muted);
+  font-weight: 300;
+  transition: color 0.2s;
+}
+
+/* =============================================
+   商品詳細（STEP2）
+============================================= */
+.product-detail {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.product-detail:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.product-detail__name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+
+.detail-section {
+  margin-bottom: 16px;
+}
+
+.detail-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+/* =============================================
+   選択ボタン（色・サイズ・温度感共通）
+============================================= */
+.option-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.option-btn {
+  display: none;
+}
+
+.option-btn + label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 12px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--color-bg);
+  white-space: nowrap;
+}
+
+.option-btn:checked + label {
+  background: var(--color-selected);
+  border-color: var(--color-selected);
+  color: var(--color-selected-text);
+}
+
+/* 温度感ボタンは少し大きめ */
+.option-btn.mood + label {
+  padding: 10px 20px;
+  font-size: 13px;
+}
+
+/* =============================================
+   連絡先入力（STEP3）
+============================================= */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  text-transform: uppercase;
+}
+
+.input-field {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+
+.input-field:focus {
+  border-color: var(--color-selected);
+}
+
+.input-note {
+  font-size: 11px;
+  color: var(--color-muted);
+  font-weight: 300;
+}
+
+/* =============================================
+   ナビゲーションボタン
+============================================= */
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.btn {
+  flex: 1;
+  padding: 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+}
+
+.btn--next,
+.btn--submit {
+  background: var(--color-selected);
+  color: white;
+}
+
+.btn--next:active,
+.btn--submit:active {
+  opacity: 0.8;
+}
+
+.btn--back {
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  color: var(--color-accent-light);
+}
+
+/* =============================================
+   完了画面
+============================================= */
+.complete {
+  text-align: center;
+  padding: 60px 24px;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+.complete__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-selected);
+  color: white;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.complete__title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.complete__text {
+  font-size: 13px;
+  color: var(--color-muted);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* =============================================
+   デバッグ表示（開発中のみ）
+   本番時は削除またはdisplay:noneに
+============================================= */
+.debug {
+  margin-top: 32px;
+  text-align: left;
+  background: #f0f0f0;
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #333;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
