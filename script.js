@@ -199,11 +199,15 @@ function showStep(step) {
 }
 
 // =============================================
-// フォーム送信処理
-// 現在は確認表示のみ
-// Google Apps Script連携時はここにfetchを追加
+// Google Apps Script URL
+// デプロイURLが変わった場合はここを更新
 // =============================================
-function submitForm() {
+const GAS_URL = 'https://script.google.com/macros/s/AKfycby0qEjqIEwMFYsN3gv0MtUuW9C3FzSoWJfUV3HbwiFemOvo5m7c0_HwMjLX4MpyEQFd/exec';
+
+// =============================================
+// フォーム送信処理
+// =============================================
+async function submitForm() {
   const selectedValues = getSelectedProducts();
   const phone = document.getElementById('phone').value.trim();
 
@@ -221,13 +225,27 @@ function submitForm() {
     })
   };
 
-  // フォームを非表示にして完了画面を表示
-  wishForm.style.display = 'none';
-  completeView.style.display = 'block';
+  // 送信ボタンを無効化
+  submitBtn.disabled = true;
+  submitBtn.textContent = '送信中...';
 
-  // デバッグ表示（開発中のみ・本番時は削除）
-  const debugOutput = document.getElementById('debugOutput');
-  debugOutput.textContent = '【送信データ確認】\n' + JSON.stringify(data, null, 2);
+  try {
+    // Google Apps Scriptに送信
+    await fetch(GAS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
 
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+    // 完了画面を表示
+    wishForm.style.display = 'none';
+    completeView.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  } catch (error) {
+    alert('送信に失敗しました。もう一度お試しください。');
+    submitBtn.disabled = false;
+    submitBtn.textContent = '登録する';
+  }
 }
