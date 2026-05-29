@@ -6,24 +6,32 @@ const PRODUCTS = [
   {
     value: 'eye',
     name: 'eye',
+    // eyeの商品画像ファイル名
+    image: 'Eye.jpg',
     // eyeの色選択肢
     colors: ['白']
   },
   {
     value: 'himawari',
     name: 'ひまわり',
+    // ひまわりの商品画像ファイル名
+    image: 'Himawari.jpg',
     // ひまわりの色選択肢
     colors: ['白', 'ピンク', '水色']
   },
   {
     value: 'justone',
     name: 'JUST ONE',
+    // JUST ONEの商品画像ファイル名
+    image: 'JustOne.jpg',
     // JUST ONEの色選択肢
     colors: ['白', 'ピンク', '水色']
   },
   {
     value: 'grooveon',
     name: 'GROOVE ON',
+    // GROOVE ONの商品画像ファイル名
+    image: 'GrooveOn.jpg',
     // GROOVE ONの色選択肢
     colors: ['白']
   }

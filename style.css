@@ -150,6 +150,16 @@ body {
   transition: all 0.2s ease;
 }
 
+/* 商品カード画像 */
+.product-card__img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  display: block;
+}
+
 .product-card input:checked ~ .product-card__inner {
   border-color: var(--color-selected);
   background: var(--color-selected);
