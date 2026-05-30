@@ -44,7 +44,7 @@ const PRODUCTS = [
 const SIZES = ['140', '150', 'S', 'M', 'L', 'XL'];
 
 // =============================================
-// 温度感選択肢
+// 希望度選択肢
 // 変更する場合はここを編集
 // =============================================
 const MOODS = ['絶対買いたい', '気になる'];
@@ -144,9 +144,9 @@ function buildStep2(selectedValues) {
         </div>
       </div>
 
-      <!-- 温度感選択 -->
+      <!-- 希望度選択 -->
       <div class="detail-section">
-        <p class="detail-label">温度感</p>
+        <p class="detail-label">希望度</p>
         <div class="option-group">
           ${MOODS.map((mood, i) => `
             <input type="radio" class="option-btn mood" name="mood_${value}" id="mood_${value}_${i}" value="${mood}">
@@ -182,7 +182,7 @@ function validateStep2() {
       return false;
     }
     if (!mood) {
-      alert(`「${product.name}」の温度感を選択してください`);
+      alert(`「${product.name}」の希望度を選択してください`);
       return false;
     }
   }
