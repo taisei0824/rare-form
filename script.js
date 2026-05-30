@@ -43,7 +43,13 @@ const PRODUCTS = [
 // =============================================
 const SIZE_GROUPS = [
   { label: 'Kids', sizes: ['90', '100', '110', '120', '130', '140', '150', '160'] },
-  { label: 'Girl', sizes: ['G-M', 'G-L'] },
+  {
+    label: 'Girl',
+    sizes: ['G-M', 'G-L'],
+    info: {
+      image: 'girl-size.png' 
+    }
+  },
   { label: 'Adult', sizes: ['S', 'M', 'L', 'XL'] }
 ];
 
@@ -143,7 +149,17 @@ function buildStep2(selectedValues) {
         ${SIZE_GROUPS.map((group, groupIndex) => `
           ${groupIndex > 0 ? '<hr class="size-group-divider">' : ''}
           <div class="size-group">
-            <p class="size-group__label">${group.label}</p>
+            <div class="size-group__header">
+              <p class="size-group__label">${group.label}</p>
+              ${group.info ? `
+                <button type="button" class="size-group__info-btn" onclick="toggleSizeInfo('info-${value}-${groupIndex}')">?</button>
+              ` : ''}
+            </div>
+            ${group.info ? `
+              <div class="size-group__info" id="info-${value}-${groupIndex}" style="display:none;">
+                <img src="${group.info.image}" alt="サイズ参考画像" class="size-group__info-img">
+              </div>
+            ` : ''}
             <div class="option-group option-group--size-row">
               ${group.sizes.map((size) => {
                 const globalIndex = SIZE_GROUPS.flatMap(g => g.sizes).indexOf(size);
@@ -269,4 +285,13 @@ async function submitForm() {
     submitBtn.disabled = false;
     submitBtn.textContent = '登録する';
   }
+}
+
+// =============================================
+// サイズ情報の表示切り替え
+// =============================================
+function toggleSizeInfo(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
 }

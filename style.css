@@ -215,16 +215,96 @@ body {
   margin-bottom: 20px;
 }
 
-.detail-section {
-  margin-bottom: 16px;
+.detail-label {
+  font-size: 13px; 
+  font-weight: 600; 
+  letter-spacing: 0.05em;
+  color: rgba(45, 45, 45, 0.9); 
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
-.detail-label {
-  font-size: 11px;
+.detail-section {
+  margin-bottom: 14px;
+  padding-bottom: 11px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3); 
+}
+
+.detail-section:last-child {
+  border-bottom: none;
+}
+
+/* サイズグループ */
+.size-group {
+  margin-bottom: 10px;
+}
+
+.size-group__label {
+  font-size: 9px;
+  font-weight: 600;
   letter-spacing: 0.1em;
-  color: var(--color-muted);
-  margin-bottom: 8px;
+  color: #7a7a7a; /* 文字色を白に */
   text-transform: uppercase;
+  margin-bottom: 14px;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px; /* 角を少し丸める（完全な四角にするなら0px） */
+  background-color: #f6f5f2; /* 背景色 */
+}
+
+.size-group-divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 12px 0;
+}
+
+.option-group--size-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* サイズグループヘッダー */
+.size-group__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.size-group__label {
+  margin-bottom: 0;
+}
+
+/* ？ボタン */
+.size-group__info-btn {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-muted);
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-weight: bold;
+}
+
+/* 情報エリア */
+.size-group__info {
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid var(--color-border);
+}
+
+.size-group__info-img {
+  width: 100%;
+  border-radius: var(--radius-sm);
 }
 
 /* =============================================
@@ -244,7 +324,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
+  padding: 4.5px 14px;
   border: 1.5px solid var(--color-border);
   border-radius: 999px;
   font-size: 12px;
@@ -259,12 +339,6 @@ body {
   background: var(--color-selected);
   border-color: var(--color-selected);
   color: var(--color-selected-text);
-}
-
-/* 温度感ボタンは少し大きめ */
-.option-btn.mood + label {
-  padding: 10px 20px;
-  font-size: 13px;
 }
 
 /* =============================================
@@ -400,31 +474,3 @@ body {
   word-break: break-all;
 }
 
-/* サイズグループ */
-.size-group {
-  margin-bottom: 12px;
-}
-
-.size-group__label {
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  color: var(--color-muted);
-  text-transform: uppercase;
-  margin-bottom: 6px;
-  background: var(--color-bg);
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 999px;
-}
-
-.size-group-divider {
-  border: none;
-  border-top: 1px solid var(--color-border);
-  margin: 12px 0;
-}
-
-.option-group--size-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
