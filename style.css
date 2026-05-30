@@ -403,7 +403,11 @@ body {
 /* サイズグループの改行制御 */
 .option-group--size-row {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 12px; /* グループ間の空間 */
+}
+
+.option-group--size-row:last-child {
+  margin-bottom: 0;
 }
