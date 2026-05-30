@@ -399,3 +399,11 @@ body {
   white-space: pre-wrap;
   word-break: break-all;
 }
+
+/* サイズグループの改行制御 */
+.option-group--size-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}

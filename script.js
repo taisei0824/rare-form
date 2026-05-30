@@ -38,10 +38,14 @@ const PRODUCTS = [
 ];
 
 // =============================================
-// サイズ選択肢
+// サイズグループ（改行単位で管理）
 // サイズを変更する場合はここを編集
 // =============================================
-const SIZES = ['140', '150', 'S', 'M', 'L', 'XL'];
+const SIZE_GROUPS = [
+  ['90', '100', '110', '120', '130', '140', '150', '160'],
+  ['G-M', 'G-L'],
+  ['S', 'M', 'L', 'XL']
+];
 
 // =============================================
 // 希望度選択肢
@@ -136,12 +140,17 @@ function buildStep2(selectedValues) {
       <!-- サイズ選択 -->
       <div class="detail-section">
         <p class="detail-label">Size</p>
-        <div class="option-group">
-          ${SIZES.map((size, i) => `
-            <input type="radio" class="option-btn" name="size_${value}" id="size_${value}_${i}" value="${size}">
-            <label for="size_${value}_${i}">${size}</label>
-          `).join('')}
-        </div>
+        ${SIZE_GROUPS.map(group => `
+          <div class="option-group option-group--size-row">
+            ${group.map((size, i) => {
+              const globalIndex = SIZE_GROUPS.flat().indexOf(size);
+              return `
+                <input type="radio" class="option-btn" name="size_${value}" id="size_${value}_${globalIndex}" value="${size}">
+                <label for="size_${value}_${globalIndex}">${size}</label>
+              `;
+            }).join('')}
+          </div>
+        `).join('')}
       </div>
 
       <!-- 希望度選択 -->
