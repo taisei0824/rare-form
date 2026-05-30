@@ -197,9 +197,9 @@ body {
    商品詳細（STEP2）
 ============================================= */
 .product-detail {
-  margin-bottom: 28px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 3px solid rgba(13, 13, 13, 0.9);
 }
 
 .product-detail:last-child {
@@ -216,16 +216,16 @@ body {
 }
 
 .detail-label {
-  font-size: 13px; 
+  font-size: 15px; 
   font-weight: 600; 
   letter-spacing: 0.05em;
   color: rgba(45, 45, 45, 0.9); 
-  margin-bottom: 10px;
+  margin-bottom: 13px;
   text-transform: uppercase;
 }
 
 .detail-section {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   padding-bottom: 11px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.3); 
 }
@@ -249,7 +249,7 @@ body {
   display: inline-block;
   padding: 2px 8px;
   border-radius: 3px; /* 角を少し丸める（完全な四角にするなら0px） */
-  background-color: #f6f5f2; /* 背景色 */
+  background-color: #f7f6f4; /* 背景色 */
 }
 
 .size-group-divider {
@@ -269,7 +269,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 6px;
+  margin-bottom: 14px;
 }
 
 .size-group__label {
@@ -278,12 +278,12 @@ body {
 
 /* ？ボタン */
 .size-group__info-btn {
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
-  border: 1.5px solid var(--color-muted);
+  border: 1.8px solid #a9a9a9;
   background: transparent;
-  color: var(--color-muted);
+  color: #a9a9a9;
   font-size: 11px;
   cursor: pointer;
   display: flex;
@@ -313,7 +313,7 @@ body {
 .option-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 9px;
 }
 
 .option-btn {
@@ -324,7 +324,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4.5px 14px;
+  padding: 3.5px 11px;
   border: 1.5px solid var(--color-border);
   border-radius: 999px;
   font-size: 12px;
