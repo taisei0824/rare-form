@@ -42,9 +42,9 @@ const PRODUCTS = [
 // サイズを変更する場合はここを編集
 // =============================================
 const SIZE_GROUPS = [
-  ['90', '100', '110', '120', '130', '140', '150', '160'],
-  ['G-M', 'G-L'],
-  ['S', 'M', 'L', 'XL']
+  { label: 'Kids', sizes: ['90', '100', '110', '120', '130', '140', '150', '160'] },
+  { label: 'Girl', sizes: ['G-M', 'G-L'] },
+  { label: 'Adult', sizes: ['S', 'M', 'L', 'XL'] }
 ];
 
 // =============================================
@@ -140,15 +140,19 @@ function buildStep2(selectedValues) {
       <!-- サイズ選択 -->
       <div class="detail-section">
         <p class="detail-label">Size</p>
-        ${SIZE_GROUPS.map(group => `
-          <div class="option-group option-group--size-row">
-            ${group.map((size, i) => {
-              const globalIndex = SIZE_GROUPS.flat().indexOf(size);
-              return `
-                <input type="radio" class="option-btn" name="size_${value}" id="size_${value}_${globalIndex}" value="${size}">
-                <label for="size_${value}_${globalIndex}">${size}</label>
-              `;
-            }).join('')}
+        ${SIZE_GROUPS.map((group, groupIndex) => `
+          ${groupIndex > 0 ? '<hr class="size-group-divider">' : ''}
+          <div class="size-group">
+            <p class="size-group__label">${group.label}</p>
+            <div class="option-group option-group--size-row">
+              ${group.sizes.map((size) => {
+                const globalIndex = SIZE_GROUPS.flatMap(g => g.sizes).indexOf(size);
+                return `
+                  <input type="radio" class="option-btn" name="size_${value}" id="size_${value}_${globalIndex}" value="${size}">
+                  <label for="size_${value}_${globalIndex}">${size}</label>
+                `;
+              }).join('')}
+            </div>
           </div>
         `).join('')}
       </div>
