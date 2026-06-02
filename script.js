@@ -266,6 +266,8 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycby0qEjqIEwMFYsN3gv0MtUu
 // フォーム送信処理
 // =============================================
 async function submitForm() {
+  alert("submitForm開始");
+
   const selectedValues = getSelectedProducts();
 
   // 送信データを組み立て
@@ -283,6 +285,8 @@ async function submitForm() {
     })
   };
 
+  console.log("送信データ", data);
+
   // 送信ボタンを無効化
   submitBtn.disabled = true;
   submitBtn.textContent = '送信中...';
@@ -291,7 +295,6 @@ async function submitForm() {
     // Google Apps Scriptに送信
     await fetch(GAS_URL, {
       method: 'POST',
-      mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
