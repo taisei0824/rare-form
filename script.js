@@ -1,3 +1,34 @@
+const LIFF_ID = "2010271386-Mx08eOPC";
+
+async function initLiff() {
+  try {
+    await liff.init({
+      liffId: LIFF_ID
+    });
+
+    if (!liff.isLoggedIn()) {
+      liff.login();
+      return;
+    }
+
+    const profile = await liff.getProfile();
+
+    document.getElementById("lineUserId").value =
+      profile.userId;
+
+    document.getElementById("lineDisplayName").value =
+      profile.displayName;
+
+    console.log("LINE User:", profile);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+initLiff();
+
+
+
 // =============================================
 // 商品データ
 // 商品名・色を変更する場合はここを編集
@@ -95,16 +126,6 @@ backBtn.addEventListener('click', () => {
   if (currentStep === 3) showStep(2);
 });
 
-// 送信
-wishForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const phone = document.getElementById('phone').value.trim();
-  if (!phone) {
-    alert('電話番号を入力してください');
-    return;
-  }
-  submitForm();
-});
 
 // =============================================
 // 選択商品を取得
@@ -246,11 +267,11 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycby0qEjqIEwMFYsN3gv0MtUu
 // =============================================
 async function submitForm() {
   const selectedValues = getSelectedProducts();
-  const phone = document.getElementById('phone').value.trim();
 
   // 送信データを組み立て
   const data = {
-    phone,
+    lineUserId: document.getElementById('lineUserId').value,
+    lineDisplayName: document.getElementById('lineDisplayName').value,
     items: selectedValues.map(value => {
       const product = PRODUCTS.find(p => p.value === value);
       return {
