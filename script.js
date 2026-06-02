@@ -126,6 +126,11 @@ backBtn.addEventListener('click', () => {
   if (currentStep === 3) showStep(2);
 });
 
+// 送信 
+wishForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  submitForm();
+});
 
 // =============================================
 // 選択商品を取得
@@ -295,6 +300,7 @@ async function submitForm() {
     // Google Apps Scriptに送信
     await fetch(GAS_URL, {
       method: 'POST',
+      mode: 'no-cors', // ← 追加
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
