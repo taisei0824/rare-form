@@ -144,7 +144,7 @@ function buildStep2(selectedValues) {
       </div>
 
       <!-- サイズ選択 -->
-      <div class="detail-section">
+      <div class="detail-section detail-section--size">
         <p class="detail-label">Size</p>
         ${SIZE_GROUPS.map((group, groupIndex) => `
           ${groupIndex > 0 ? '<hr class="size-group-divider">' : ''}
