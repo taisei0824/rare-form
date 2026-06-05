@@ -318,7 +318,6 @@ async function submitForm() {
     })
   };
 
-  console.log("送信データ", data);
 
   // 送信ボタンを無効化
   submitBtn.disabled = true;
