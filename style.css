@@ -364,7 +364,7 @@ body {
 ============================================= */
 
 .confirm-item {
-  padding: 12px 0px 12px 30px;
+  padding: 12px 0px 12px 45px ;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -396,7 +396,7 @@ body {
 
 .btn {
   flex: 1;
-  padding: 16px;
+  padding: 12px;
   border: none;
   border-radius: var(--radius-sm);
   font-size: 14px;
@@ -459,6 +459,7 @@ body {
   font-size: 13px;
   color: var(--color-muted);
   line-height: 1.8;
+  margin-bottom: 24px;
   font-weight: 300;
 }
 
