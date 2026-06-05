@@ -271,7 +271,6 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycby0qEjqIEwMFYsN3gv0MtUu
 // フォーム送信処理
 // =============================================
 async function submitForm() {
-  alert("submitForm開始");
 
   const selectedValues = getSelectedProducts();
 
