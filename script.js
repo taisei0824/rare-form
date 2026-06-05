@@ -245,6 +245,33 @@ function validateStep2() {
 }
 
 // =============================================
+// STEP3に選択内容を表示
+// =============================================
+function buildStep3() {
+  const selectedValues = getSelectedProducts();
+  const container = document.getElementById('confirmDetails');
+  container.innerHTML = '';
+
+  selectedValues.forEach(value => {
+    const product = PRODUCTS.find(p => p.value === value);
+    const color = document.querySelector(`input[name="color_${value}"]:checked`)?.value;
+    const size = document.querySelector(`input[name="size_${value}"]:checked`)?.value;
+    const mood = document.querySelector(`input[name="mood_${value}"]:checked`)?.value;
+
+    container.innerHTML += `
+      <div class="confirm-item">
+        <p class="confirm-item__name">${product.name}</p>
+        <div class="confirm-item__detail">
+          <span>色：${color}</span>
+          <span>サイズ：${size}</span>
+          <span>希望度：${mood}</span>
+        </div>
+      </div>
+    `;
+  });
+}
+
+// =============================================
 // ステップ表示切り替え
 // =============================================
 function showStep(step) {
@@ -253,6 +280,8 @@ function showStep(step) {
   step1.style.display = step === 1 ? 'block' : 'none';
   step2.style.display = step === 2 ? 'block' : 'none';
   step3.style.display = step === 3 ? 'block' : 'none';
+
+  if (step === 3) buildStep3(); // ← 追加
 
   backBtn.style.display = step > 1 ? 'block' : 'none';
   nextBtn.style.display = step < 3 ? 'block' : 'none';

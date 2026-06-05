@@ -360,42 +360,29 @@ body {
 }
 
 /* =============================================
-   連絡先入力（STEP3）
+   確認画面（STEP3）
 ============================================= */
-.input-group {
+
+.confirm-item {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.confirm-item:last-child {
+  border-bottom: none;
+}
+
+.confirm-item__name {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.confirm-item__detail {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.input-label {
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  gap: 12px;
+  font-size: 12px;
   color: var(--color-muted);
-  text-transform: uppercase;
-}
-
-.input-field {
-  width: 100%;
-  padding: 14px 16px;
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  font-size: 16px;
-  font-family: var(--font-body);
-  background: var(--color-bg);
-  outline: none;
-  transition: border-color 0.2s;
-  -webkit-appearance: none;
-}
-
-.input-field:focus {
-  border-color: var(--color-selected);
-}
-
-.input-note {
-  font-size: 11px;
-  color: var(--color-muted);
-  font-weight: 300;
 }
 
 /* =============================================

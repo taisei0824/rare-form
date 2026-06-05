@@ -105,6 +105,17 @@
         </div>
       </div>
 
+      <div class="step" id="step3" style="display:none;">
+        <h2 class="step__title">
+          <span class="step__num">03</span>
+          内容を確認して送信
+        </h2>
+        <div id="confirmDetails"></div>
+        <div class="input-group">
+          <p class="input-note">作成時にLINEでお知らせします。</p>
+        </div>
+      </div>
+
       <!-- ナビゲーションボタン -->
       <div class="nav-buttons">
         <button type="button" class="btn btn--back" id="backBtn" style="display:none;">戻る</button>
@@ -119,9 +130,13 @@
       <div class="complete__icon">✓</div>
       <h2 class="complete__title">登録完了</h2>
       <p class="complete__text">作成時にLINEでご連絡します。<br>お楽しみに！</p>
+    </div>
 
-      <!-- 送信データの確認表示（開発中） -->
-      <div class="debug" id="debugOutput"></div>
+    <div class="complete" id="completeView" style="display:none;">
+      <div class="complete__icon">✓</div>
+      <h2 class="complete__title">登録完了</h2>
+      <p class="complete__text">作成時にLINEでご連絡します。<br>お楽しみに！</p>
+      <button class="btn btn--next" onclick="location.reload()">TOPに戻る</button>
     </div>
 
   </div>
