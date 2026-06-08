@@ -308,11 +308,13 @@ async function checkStatus() {
   try {
     const res = await fetch(GAS_URL);
     const data = await res.json();
+    alert('status: ' + data.status);
     if (data.status === '停止中') {
       wishForm.style.display = 'none';
       document.getElementById('stoppedView').style.display = 'block';
     }
   } catch (e) {
+    alert('エラー: ' + e.message);
     console.error(e);
   }
 }
