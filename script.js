@@ -31,11 +31,11 @@ async function initLiff() {
   }
 }
 
-initLiff();
-
 if (IS_STOPPED) {
   document.getElementById('wishForm').style.display = 'none';
   document.getElementById('stoppedView').style.display = 'block';
+} else {
+  initLiff();
 }
 
 // =============================================
@@ -304,26 +304,6 @@ function showStep(step) {
 // デプロイURLが変わった場合はここを更新
 // =============================================
 const GAS_URL = 'https://script.google.com/macros/s/AKfycby0qEjqIEwMFYsN3gv0MtUuW9C3FzSoWJfUV3HbwiFemOvo5m7c0_HwMjLX4MpyEQFd/exec';
-
-// =============================================
-// 受付状態を確認
-// =============================================
-async function checkStatus() {
-  try {
-    const res = await fetch(GAS_URL);
-    const data = await res.json();
-    if (data.status === '停止中') {
-      const form = document.getElementById('wishForm');
-      const stopped = document.getElementById('stoppedView');
-      if (form) form.style.display = 'none';
-      if (stopped) stopped.style.display = 'block';
-    }
-  } catch (e) {
-    console.error(e);
-  }
-}
-
-checkStatus();
 
 // =============================================
 // フォーム送信処理
