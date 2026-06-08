@@ -1,9 +1,3 @@
-// =============================================
-// 受付状態
-// 停止する時は false を true に変更してプッシュ
-// =============================================
-const IS_STOPPED = true;
-
 const LIFF_ID = "2010271386-Mx08eOPC";
 
 async function initLiff() {
@@ -31,12 +25,8 @@ async function initLiff() {
   }
 }
 
-if (IS_STOPPED) {
-  document.getElementById('wishForm').style.display = 'none';
-  document.getElementById('stoppedView').style.display = 'block';
-} else {
   initLiff();
-}
+
 
 // =============================================
 // 商品データ
