@@ -28,22 +28,6 @@ async function initLiff() {
 initLiff();
 
 // =============================================
-// 受付状態を確認
-// =============================================
-async function checkStatus() {
-  try {
-    const res = await fetch(GAS_URL);
-    const data = await res.json();
-    if (data.status === '停止中') {
-      wishForm.style.display = 'none';
-      document.getElementById('stoppedView').style.display = 'block';
-    }
-  } catch (e) {
-    console.error(e);
-  }
-}
-
-// =============================================
 // 商品データ
 // 商品名・色を変更する場合はここを編集
 // =============================================
@@ -119,7 +103,7 @@ const completeView = document.getElementById('completeView');
 const wishForm = document.getElementById('wishForm');
 
 // 次へボタン
-nextBtn.addEventListener('click', () => {
+nextBtn.addEventListener('click', async () => {
   if (currentStep === 1) {
     const selected = getSelectedProducts();
     if (selected.length === 0) {
@@ -130,6 +114,13 @@ nextBtn.addEventListener('click', () => {
     showStep(2);
   } else if (currentStep === 2) {
     if (!validateStep2()) return;
+    const statusRes = await fetch(GAS_URL);
+    const statusData = await statusRes.json();
+    if (statusData.status === '停止中') {
+      wishForm.style.display = 'none';
+      document.getElementById('stoppedView').style.display = 'block';
+      return;
+    }
     showStep(3);
   }
 });
@@ -309,6 +300,22 @@ function showStep(step) {
 // デプロイURLが変わった場合はここを更新
 // =============================================
 const GAS_URL = 'https://script.google.com/macros/s/AKfycby0qEjqIEwMFYsN3gv0MtUuW9C3FzSoWJfUV3HbwiFemOvo5m7c0_HwMjLX4MpyEQFd/exec';
+
+// =============================================
+// 受付状態を確認
+// =============================================
+async function checkStatus() {
+  try {
+    const res = await fetch(GAS_URL);
+    const data = await res.json();
+    if (data.status === '停止中') {
+      wishForm.style.display = 'none';
+      document.getElementById('stoppedView').style.display = 'block';
+    }
+  } catch (e) {
+    console.error(e);
+  }
+}
 
 checkStatus();
 
