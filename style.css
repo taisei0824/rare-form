@@ -67,7 +67,7 @@ body {
 
 .header__desc {
   font-size: 13px;
-  color: var(--color-muted);
+  color: rgba(80, 80, 80, 0.835);
   line-height: 1.8;
   font-weight: 300;
 }
