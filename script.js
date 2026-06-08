@@ -1,3 +1,9 @@
+// =============================================
+// 受付状態
+// 停止する時は false を true に変更してプッシュ
+// =============================================
+const IS_STOPPED = true;
+
 const LIFF_ID = "2010271386-Mx08eOPC";
 
 async function initLiff() {
@@ -26,6 +32,11 @@ async function initLiff() {
 }
 
 initLiff();
+
+if (IS_STOPPED) {
+  document.getElementById('wishForm').style.display = 'none';
+  document.getElementById('stoppedView').style.display = 'block';
+}
 
 // =============================================
 // 商品データ
@@ -114,13 +125,6 @@ nextBtn.addEventListener('click', async () => {
     showStep(2);
   } else if (currentStep === 2) {
     if (!validateStep2()) return;
-    const statusRes = await fetch(GAS_URL);
-    const statusData = await statusRes.json();
-    if (statusData.status === '停止中') {
-      wishForm.style.display = 'none';
-      document.getElementById('stoppedView').style.display = 'block';
-      return;
-    }
     showStep(3);
   }
 });
